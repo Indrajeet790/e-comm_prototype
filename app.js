@@ -19,8 +19,8 @@ server.use(expressLayouts);
 const productController = new ProductController()
 
 server.get('/',productController.getProducts)
-server.get('/new',productController.getAddForm)
-server.post('/',productController.addnewProduct)
+server.get('/new',productController.getAddProduct)
+server.post('/',productController.postAddProduct)
 
 server.use(express.static("src/views"));
 server.listen(8000,(err)=>{
