@@ -8,4 +8,10 @@ export default class productController {
     // console.log(products)
       res.render("products.ejs",{products: products})
   }
+// new product
+  getAddForm(req,res){
+    return res.render('new_product')
+}
+
+
 }
