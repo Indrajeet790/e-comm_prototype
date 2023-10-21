@@ -22,6 +22,14 @@ const productController = new ProductController()
 server.get('/',productController.getProducts)
 server.get('/new',productController.getAddProduct)
 server.post('/',validationMiddleware,productController.postAddProduct)
+server.get(
+    '/update-product/:id',
+    productController.getUpdateProductView
+  );
+  server.post(
+    '/update-product',
+    productController.postUpdateProduct
+  );
 
 server.use(express.static("src/views"));
 server.listen(8000,(err)=>{
