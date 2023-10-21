@@ -15,6 +15,7 @@ server.set("views", path.join(path.resolve(),"src",'views'));
 
 // middleware
 server.use(expressLayouts);
+server.use(express.static('public'));
 
 // create an instance of productController
 const productController = new ProductController()
@@ -30,6 +31,7 @@ server.get(
     '/update-product',
     productController.postUpdateProduct
   );
+  server.post('/delete-product/:id', productController.deleteProduct);
 
 server.use(express.static("src/views"));
 server.listen(8000,(err)=>{

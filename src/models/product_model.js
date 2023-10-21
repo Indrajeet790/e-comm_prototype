@@ -10,12 +10,20 @@ export default class ProductModel{
     static get(){
         return products;
     }
-    
+
     static update(productObj) {
       const index = products.findIndex(
         (p) => p.id == productObj.id
       );
       products[index] = productObj;
+    }
+    
+    static delete(id){
+      const index = products.findIndex(
+        (p) => p.id == id
+      );
+      products.splice(index,1);
+  
     }
 
     static add(productObj){
