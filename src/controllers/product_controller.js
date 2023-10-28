@@ -16,10 +16,11 @@ getAddProduct(req, res, next) {
 }
 postAddProduct(req,res,next){
    // validate data
-  
   // access data from form.
-  // console.log(req.body);
-  ProductModel.add(req.body);
+  const { name, desc, price } = req.body;
+  const imageUrl =
+    'images/' + req.file.filename;
+  ProductModel.add(name, desc, price, imageUrl);
   var products = ProductModel.get();
   return res.render('products', {products});
 }
@@ -40,11 +41,12 @@ getUpdateProductView(req, res, next) {
   }
 }
 // submit updated data
-postUpdateProduct(req, res) {
+postUpdateProduct(req, res ,next) {
   ProductModel.update(req.body);
   var products = ProductModel.get();
   res.render('products.ejs', { products });
 }
+
 
 deleteProduct(req, res){
   const id = req.params.id;

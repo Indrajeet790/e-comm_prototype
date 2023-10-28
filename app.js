@@ -3,6 +3,7 @@ import path from 'path';
 import ProductController from "./src/controllers/product_controller.js";
 import expressLayouts from 'express-ejs-layouts';
 import validationMiddleware from './src/middleware/validation_Middleware.js'
+import {uploadFile} from './src/middleware/file-upload-middleware.js';
 const server = express();
 
 // parse form data
@@ -22,7 +23,7 @@ const productController = new ProductController()
 
 server.get('/',productController.getProducts)
 server.get('/new',productController.getAddProduct)
-server.post('/',validationMiddleware,productController.postAddProduct)
+server.post('/', uploadFile.single('imageUrl'),validationMiddleware,productController.postAddProduct)
 server.get(
     '/update-product/:id',
     productController.getUpdateProductView
