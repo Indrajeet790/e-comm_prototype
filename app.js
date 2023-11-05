@@ -28,6 +28,11 @@ const usersController =new UserController();
 // register route
 server.get('/register', usersController.getRegister);
 server.get('/login', usersController.getLogin);
+server.post('/login', usersController.postLogin);
+server.post(
+  '/register',
+  usersController.postRegister
+);
 
 // product page routes
 server.get('/',productController.getProducts)
